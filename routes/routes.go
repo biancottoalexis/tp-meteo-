@@ -1,33 +1,20 @@
 package routes
 
 import (
-    "fmt"
-    "net/http"
+	"net/http"
+
+	"tp-meteo-go/controllers"
 )
 
 func InitRoutes() {
-    http.HandleFunc("GET /{$}", accueil)
-    http.HandleFunc("GET /ville", ville)
-    http.HandleFunc("GET /meteo", meteo)
+	controllers.InitTemplates()
 
-    http.Handle("/static/",
-        http.StripPrefix("/static/", http.FileServer(http.Dir("./assets"))))
+	http.HandleFunc("GET /{$}", controllers.Accueil)
+	http.HandleFunc("GET /ville", controllers.Ville)
+	http.HandleFunc("GET /meteo", controllers.Meteo)
 
-    http.HandleFunc("/", pageIntrouvable)
-}
+	fichiers := http.FileServer(http.Dir("assets"))
+	http.Handle("/static/", http.StripPrefix("/static/", fichiers))
 
-func accueil(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintln(w, "Accueil météo")
-}
-
-func ville(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintln(w, "Recherche de communes")
-}
-
-func meteo(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintln(w, "Prévisions météo")
-}
-
-func pageIntrouvable(w http.ResponseWriter, r *http.Request) {
-    http.Error(w, "Cette page n'existe pas.", http.StatusNotFound)
+	http.HandleFunc("/", controllers.PageIntrouvable)
 }

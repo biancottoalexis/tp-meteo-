@@ -1,0 +1,305 @@
+/* STYLE GENERAL */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    color: #f1f5f9;
+    background: linear-gradient(135deg, #071426, #16365c, #164e63);
+    background-attachment: fixed;
+}
+
+body > * {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+h2 {
+    font-size: 25px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #7dd3fc;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* LIENS ET BOUTONS */
+
+a {
+    color: #7dd3fc;
+}
+
+button,
+input[type="submit"],
+body > a {
+    display: block;
+    width: fit-content;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 12px;
+    background: #38bdf8;
+    color: #082f49;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover,
+input[type="submit"]:hover,
+body > a:hover {
+    background: #7dd3fc;
+    transform: translateY(-2px);
+}
+
+body > a {
+    margin-top: 35px;
+    margin-bottom: 20px;
+}
+
+/* FORMULAIRE DE RECHERCHE */
+
+form {
+    padding: 30px;
+    background: #142c47;
+    border: 1px solid #36536f;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px #06132255;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="search"] {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    border: 1px solid #52718c;
+    border-radius: 12px;
+    background: #0b1e33;
+    color: white;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: #a5b8ca;
+}
+
+input:focus {
+    outline: 2px solid #38bdf8;
+    border-color: transparent;
+}
+
+/* LISTE DES COMMUNES */
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+li a {
+    display: block;
+    padding: 18px;
+    border: 1px solid #36536f;
+    border-radius: 12px;
+    background: #142c47;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+li a:hover {
+    background: #204766;
+    border-color: #38bdf8;
+}
+
+/* CARTE OPENSTREETMAP */
+
+iframe {
+    display: block;
+    width: 100%;
+    border: 2px solid #36536f;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px #06132255;
+}
+
+iframe + p {
+    font-size: 13px;
+    color: #b9cad9;
+}
+
+/* CARTES DES PREVISIONS */
+
+.jour {
+    padding: 24px;
+    margin-bottom: 16px;
+    border: 1px solid #36536f;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #193954, #10283f);
+    box-shadow: 0 8px 20px #06132233;
+    transition: 0.2s;
+}
+
+.jour:hover {
+    border-color: #7dd3fc;
+    transform: translateY(-3px);
+}
+
+.jour h3 {
+    margin-bottom: 12px;
+}
+
+.jour p {
+    margin: 6px 0;
+    color: #e2e8f0;
+}
+
+.jour h3 + p {
+    font-size: 19px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* BARRES DES TEMPERATURES */
+
+.barre {
+    display: block;
+    width: 100%;
+    height: 16px;
+    margin-top: 18px;
+    overflow: visible;
+}
+
+.barre-fond {
+    fill: #071a2d;
+}
+
+.barre-temperature {
+    fill: #fbbf24;
+}
+
+/* ACCESSIBILITE */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #bae6fd;
+    outline-offset: 4px;
+}
+
+/* VERSION TELEPHONE */
+
+@media (max-width: 600px) {
+    body {
+        padding: 25px 15px;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    form,
+    .jour {
+        padding: 18px;
+    }
+
+    iframe {
+        height: 260px;
+    }
+
+    button,
+    input[type="submit"] {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none;
+    }
+}
+
+/* ACCUEIL */
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #bae6fd;
+    font-size: 18px;
+}
+
+main {
+    max-width: 700px;
+    margin: auto;
+}
+
+main h2 {
+    text-align: center;
+}
+
+form {
+    max-width: 550px;
+    margin: 30px auto;
+}
+
+form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.erreur {
+    color: #fecaca;
+    background: #7f1d1d;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    color: #a5b8ca;
+    font-size: 14px;
+}
+
+/*full intelligence artificiel 

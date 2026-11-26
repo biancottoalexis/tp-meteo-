@@ -1,17 +1,14 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
+
+	"tp-meteo-go/routes"
 )
 
-func accueil(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Mon application météo fonctionne !")
-}
-
 func main() {
-	http.HandleFunc("/", accueil)
+	routes.InitRoutes()
 
 	log.Println("Serveur lancé sur http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))

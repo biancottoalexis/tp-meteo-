@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communes trouvées</title>
+    <link rel="stylesheet" href="/static/meteo.css">
+</head>
+<body>
+
+    <header>
+        <h1>📍 Communes trouvées</h1>
+        <p>Sélectionnez une commune pour découvrir sa météo</p>
+    </header>
+
+    <main>
+        <ul>
+            {{range .}}
+                <li>
+                    <a href="/meteo?code={{.Code}}">
+                        {{.Nom}} - {{.Code}}
+                    </a>
+                </li>
+            {{end}}
+        </ul>
+    </main>
+
+    <a href="/">Retour à la recherche</a>
+
+    <footer>
+        <p>TP Météo en Go</p>
+    </footer>
+
+</body>
+</html>

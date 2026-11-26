@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Météo</title>
+    <link rel="stylesheet" href="/static/meteo.css">
+</head>
+<body>
+    <h1>Météo à {{.Commune.Nom}}</h1>
+
+    {{if .Carte}}
+        <h2>Carte de la commune</h2>
+        <iframe title="Carte de {{.Commune.Nom}}" src="{{.Carte}}"
+                width="100%" height="350" loading="lazy"></iframe>
+        <p>Carte : <a href="https://www.openstreetmap.org/copyright">© les contributeurs OpenStreetMap</a></p>
+    {{end}}
+
+    <h2>Prévisions météo</h2>
+
+    {{range .Barres}}
+        <article class="jour">
+            <h3>{{frDate .Jour.Date}}</h3>
+            <p>{{weatherIcon .Jour.Code}} {{weatherLabel .Jour.Code}}</p>
+            <p>Minimum : {{temp .Jour.TempMin}}</p>
+            <p>Maximum : {{temp .Jour.TempMax}}</p>
+
+            <svg class="barre" width="100%" height="16" aria-hidden="true">
+                <rect class="barre-fond" width="100%" height="16" rx="8"/>
+
+                {{if gt .Largeur 0.0}}
+                    <rect class="barre-temperature" x="{{.Position}}%"
+                          width="{{.Largeur}}%" height="16" rx="8"/>
+                {{else}}
+                    <circle class="barre-temperature" cx="{{.Position}}%" cy="8" r="4"/>
+                {{end}}
+            </svg>
+        </article>
+    {{end}}
+
+    <a href="/">Rechercher une autre ville</a>
+</body>
+</html>
